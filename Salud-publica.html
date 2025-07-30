@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salud Publica y Fisioterapia | Higiene Postural Docente</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #1e88e5;
+            --secondary-color: #0d47a1;
+            --accent-color: #ffffff;
+            --text-color: #333333;
+            --light-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            --hover-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            --success-color: #4caf50;
+            --warning-color: #ff9800;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #e3f2fd, #bbdefb, #90caf9, #64b5f6);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+            position: relative;
+            box-shadow: var(--light-shadow);
+        }
+        
+        .back-button {
+            position: absolute;
+            left: 1rem;
+            top: 1.5rem;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .back-button:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            transform: translateX(-5px);
+        }
+        
+        .header-content h1 {
+            margin: 0;
+            font-size: 2.2rem;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+        }
+        
+        .header-content p {
+            margin: 0.5rem 0 0;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        
+        .content-section {
+            background-color: var(--accent-color);
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--light-shadow);
+            transition: transform 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .content-section:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--hover-shadow);
+        }
+        
+        .content-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
+            transition: width 0.3s ease;
+        }
+        
+        .content-section:hover::before {
+            width: 8px;
+        }
+        
+        h2 {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        
+        h3 {
+            color: var(--secondary-color);
+        }
+        
+        .image-container {
+            margin: 1.5rem 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--light-shadow);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .image-container:hover {
+            transform: scale(1.01);
+            box-shadow: var(--hover-shadow);
+        }
+        
+        .image-container img {
+            width: 50%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        
+        .image-container:hover img {
+            transform: scale(1.03);
+        }
+        
+        .image-container::after {
+            content: attr(data-caption);
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 0.8rem;
+            text-align: center;
+            font-weight: bold;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .image-container:hover::after {
+            transform: translateY(0);
+        }
+        
+        ul {
+            padding-left: 1.5rem;
+            list-style-type: none;
+        }
+        
+        li {
+            margin-bottom: 0.8rem;
+            position: relative;
+            padding-left: 2rem;
+            transition: all 0.3s ease;
+        }
+        
+        li:hover {
+            color: var(--secondary-color);
+            transform: translateX(5px);
+        }
+        
+        li:before {
+            content: "\f058";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            color: var(--success-color);
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        
+        /* Estilos para las tarjetas de informacion */
+        .info-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .info-card {
+            background-color: var(--accent-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: var(--light-shadow);
+            transition: all 0.3s ease;
+            border: 1px solid #e0e0e0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--hover-shadow);
+            border-color: var(--primary-color);
+        }
+        
+        .info-card h3 {
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            color: var(--secondary-color);
+            position: relative;
+            z-index: 2;
+        }
+        
+        .info-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary-color), var(--warning-color));
+            transition: height 0.3s ease;
+        }
+        
+        .info-card:hover::before {
+            height: 8px;
+        }
+        
+        footer {
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* Animaciones */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .content-section {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+        
+        .info-card:nth-child(1) { animation-delay: 0.1s; }
+        .info-card:nth-child(2) { animation-delay: 0.2s; }
+        
+        /* Botón flotante */
+        .floating-btn {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background-color: var(--primary-color);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+        
+        .floating-btn:hover {
+            background-color: var(--secondary-color);
+            transform: scale(1.1);
+        }
+        
+        /* Sección de emergencia */
+        .emergency-section {
+            background-color: #fff8e1;
+            border-left: 5px solid var(--warning-color);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .emergency-section h3 {
+            color: var(--warning-color);
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .info-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            header {
+                padding: 1.5rem 1rem;
+            }
+            
+            .header-content h1 {
+                font-size: 1.8rem;
+            }
+            
+            .back-button {
+                position: static;
+                margin-bottom: 1rem;
+                display: inline-flex;
+            }
+            
+            li {
+                padding-left: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="back-button">
+            <i class="fas fa-arrow-left"></i> Inicio
+        </a>
+        <div class="header-content">
+            <h1>Salud Pública y Fisioterapia</h1>
+            <p>Fundamentos para la Higiene Postural en Docentes</p>
+        </div>
+    </header>
+    
+    <main>
+        <section class="content-section">
+            <h2><i class="fas fa-heartbeat"></i> Salud Publica en el Ambito Docente</h2>
+            
+            <div class="image-container" data-caption="Salud Publica para Docentes">
+                <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Salud pública docente">
+            </div>
+            
+            <p>La salud publica en el contexto docente se enfoca en:</p>
+            <ul>
+                <li>Prevencion de trastornos musculoesqueleticos relacionados con la profesion docente</li>
+                <li>Promocion de entornos laborales saludables en instituciones educativas</li>
+                <li>Deteccion temprana de problemas posturales en el personal educativo</li>
+                <li>Implementacion de politicas de salud ocupacional especificas para docentes</li>
+            </ul>
+            
+            <div class="emergency-section">
+                <h3><i class="fas fa-exclamation-triangle"></i> Señales de Alerta</h3>
+                <p>Si experimentas dolor persistente por más de 2 semanas, hormigueo en extremidades o limitación de movimiento, consulta inmediatamente a un especialista.</p>
+            </div>
+        </section>
+        
+        <section class="content-section">
+            <h2><i class="fas fa-user-md"></i> Fisioterapia para Docentes</h2>
+            
+            <div class="image-container" data-caption="Fisioterapia Especializada">
+                <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Fisioterapia docente">
+            </div>
+            
+            <div class="info-cards">
+                <div class="info-card">
+                    <h3><i class="fas fa-bullseye"></i> Objetivos Principales</h3>
+                    <p>Prevenir y tratar lesiones derivadas de malas posturas, movimientos repetitivos y largas horas en posición estática.</p>
+                </div>
+                <div class="info-card">
+                    <h3><i class="fas fa-award"></i> Beneficios Clave</h3>
+                    <p>Reduce el dolor de espalda, mejora la movilidad, previene lesiones cronicas y aumenta la calidad de vida laboral.</p>
+                </div>
+            </div>
+            
+            <h3><i class="fas fa-calendar-check"></i> Recomendaciones de Frecuencia</h3>
+            <ul>
+                <li>Evaluacion postural anual con fisioterapeuta</li>
+                <li>Sesiones preventivas mensuales para docentes con factores de riesgo</li>
+                <li>Terapia semanal en casos de dolor o lesión establecida</li>
+            </ul>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="footer-content">
+            <p>© 2025 Plataforma Educativa para la Higiene Postural en Docentes. Todos los derechos reservados.</p>
+            <p>Colegio E.T.R Monseñor Gregorio Adam, Naguanagua Edo. Carabobo</p>
+        </div>
+    </footer>
+    
+    <div class="floating-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+    
+    <script>
+        // Efecto de scroll suave para todos los enlaces
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Mostrar/ocultar botón flotante según scroll
+        window.addEventListener('scroll', function() {
+            const floatingBtn = document.querySelector('.floating-btn');
+            if (window.scrollY > 300) {
+                floatingBtn.style.opacity = '1';
+                floatingBtn.style.visibility = 'visible';
+            } else {
+                floatingBtn.style.opacity = '0';
+                floatingBtn.style.visibility = 'hidden';
+            }
+        });
+        
+        // Animación al cargar la página
+        document.addEventListener('DOMContentLoaded', function() {
+            document.body.style.opacity = '1';
+        });
+        
+        // Efecto hover para las tarjetas de información
+        const infoCards = document.querySelectorAll('.info-card');
+        infoCards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                const icon = this.querySelector('i');
+                if (icon) {
+                    icon.style.transform = 'rotate(10deg) scale(1.2)';
+                }
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                const icon = this.querySelector('i');
+                if (icon) {
+                    icon.style.transform = 'rotate(0) scale(1)';
+                }
+            });
+        });
+        
+        // Mostrar/ocultar seccion de emergencia
+        const emergencySection = document.querySelector('.emergency-section');
+        if (emergencySection) {
+            emergencySection.addEventListener('click', function() {
+                this.style.transform = this.style.transform === 'scale(0.98)' ? 'scale(1)' : 'scale(0.98)';
+            });
+        }
+    </script>
+</body>
+</html>

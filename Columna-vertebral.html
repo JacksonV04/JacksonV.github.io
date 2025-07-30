@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Columna Vertebral | Higiene Postural Docente</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #1a5276;
+            --secondary-color: #2980b9;
+            --accent-color: #d6eaf8;
+            --text-color: #2c3e50;
+            --light-text: #ecf0f1;
+            --highlight-color: #e74c3c;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
+            color: var(--text-color);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--light-text);
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.15);
+            position: relative;
+            border-bottom: 4px solid var(--highlight-color);
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        .back-button {
+            position: absolute;
+            left: 20px;
+            top: 20px;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .back-button:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            transform: translateX(-5px);
+        }
+        
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 20px;
+        }
+        
+        .content-section {
+            background-color: white;
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-left: 5px solid var(--primary-color);
+        }
+        
+        .content-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+        }
+        
+        .content-section h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 2px solid var(--accent-color);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.8rem;
+        }
+        
+        .image-container {
+            margin: 2.5rem 0;
+            text-align: center;
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .image-container:hover {
+            transform: scale(1.02);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .image-container img {
+            max-width: 40%;
+            height: auto;
+            border-radius: 10px;
+            display: block;
+        }
+        
+        .image-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 1rem;
+            font-size: 1.1rem;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .image-container:hover .image-caption {
+            transform: translateY(0);
+        }
+        
+        .anatomy-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .anatomy-card {
+            background: linear-gradient(145deg, #ffffff 0%, var(--accent-color) 100%);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+            border-top: 4px solid var(--primary-color);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .anatomy-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+            border-top-color: var(--highlight-color);
+        }
+        
+        .anatomy-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1.2rem;
+            font-size: 1.4rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .anatomy-card p {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .anatomy-card::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(26, 82, 118, 0.1) 0%, rgba(26, 82, 118, 0) 70%);
+            transition: all 0.5s ease;
+            opacity: 0;
+        }
+        
+        .anatomy-card:hover::before {
+            opacity: 1;
+            transform: scale(0.8);
+        }
+        
+        ul {
+            margin: 1.5rem 0;
+            padding-left: 2rem;
+        }
+        
+        li {
+            margin-bottom: 0.8rem;
+            position: relative;
+            padding-left: 1.8rem;
+            transition: all 0.3s ease;
+        }
+        
+        li:hover {
+            color: var(--primary-color);
+            transform: translateX(5px);
+        }
+        
+        li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: var(--highlight-color);
+            font-size: 1.2rem;
+        }
+        
+        footer {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--light-text);
+            text-align: center;
+            padding: 3rem 0;
+            margin-top: 4rem;
+            clip-path: polygon(0 20%, 100% 0, 100% 100%, 0% 100%);
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Animaciones */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animated {
+            animation: fadeIn 0.8s ease forwards;
+        }
+        
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        
+        /* Efecto de particulas */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            overflow: hidden;
+        }
+        
+        .particle {
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            animation: float 15s infinite linear;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-1000px) rotate(720deg); opacity: 0; }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .back-button {
+                position: static;
+                margin-bottom: 1.5rem;
+                display: inline-flex;
+            }
+            
+            .content-section {
+                padding: 1.5rem;
+            }
+            
+            .anatomy-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="particles" id="particles"></div>
+    
+    <header>
+        <a href="index.html" class="back-button">
+            <i class="fas fa-arrow-left"></i> Inicio
+        </a>
+        <div class="header-content">
+            <h1>Columna Vertebral</h1>
+            <p>Estructura, funcion y cuidados para docentes</p>
+        </div>
+    </header>
+    
+    <main>
+        <section class="content-section animated">
+            <h2><i class="fas fa-bone"></i> Anatomía de la Columna</h2>
+            
+            <div class="image-container">
+                <img src="https://crene.es/wp-content/uploads/2019/05/higiene-postural2.png">
+                <div class="image-caption">Estructura de la columna vertebral humana</div>
+            </div>
+            
+            <p>La columna vertebral es el pilar fundamental de nuestro sistema musculoesqueletico. Para los docentes, comprender su estructura es esencial para prevenir lesiones y mantener una postura saludable durante las largas jornadas laborales.</p>
+            
+            <div class="anatomy-container">
+                <div class="anatomy-card animated delay-1">
+                    <h3>Región Cervical (7 vertebras)</h3>
+                    <p>Soporta el peso de la cabeza (4-5 kg) y permite su amplia movilidad. Es la zona mas flexible pero tambien mas vulnerable a tensiones por malas posturas al escribir en el pizarron o corregir trabajos.</p>
+                </div>
+                <div class="anatomy-card animated delay-1">
+                    <h3>Región Torácica (12 vértebras)</h3>
+                    <p>Protege organos vitales y se articula con las costillas. Su movilidad limitada la hace menos propensa a lesiones, pero las posturas encorvadas prolongadas pueden causar rigidez y dolor.</p>
+                </div>
+                <div class="anatomy-card animated delay-2">
+                    <h3>Region Lumbar (5 vertebras)</h3>
+                    <p>Soporta la mayor parte del peso corporal. Es la zona que mas sufre al estar de pie durante horas o al sentarse incorrectamente. Las hernias discales son comunes en esta región.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="content-section animated delay-1">
+            <h2><i class="fas fa-heartbeat"></i> Cuidados Especificos para Docentes</h2>
+            
+            <div class="image-container">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIbph1l1XKz3A2RyEFK6OfQZJA4OKHOE9qVA&s">
+                <div class="image-caption">Ejercicios de fortalecimiento para docentes</div>
+            </div>
+            
+            <p>Los docentes pueden proteger su columna vertebral con estas practicas diarias:</p>
+            
+            <ul>
+                <li><strong>Al escribir en el pizarron:</strong> Mantenga la espalda recta, alternando el brazo con que escribe para distribuir la carga. Coloque el pizarron a una altura adecuada (el borde superior a nivel de los ojos).</li>
+                
+                <li><strong>Al estar de pie:</strong> Distribuya el peso equitativamente entre ambos pies, con las rodillas ligeramente flexionadas. Use calzado con buen soporte arqueado y evite tacones altos.</li>
+                
+                <li><strong>Al sentarse:</strong> Ajuste la altura de la silla para que sus pies descansen completamente en el suelo. Use un soporte lumbar si es necesario y cambie de posicion cada 30 minutos.</li>
+                
+                <li><strong>Al levantar materiales:</strong> Flexione las rodillas manteniendo la espalda recta. Acerquese el objeto al cuerpo antes de levantarlo. Para cargas pesadas, use un carrito o pida ayuda.</li>
+                
+                <li><strong>Ejercicios diarios:</strong> Realice estiramientos cervicales suaves y rotaciones de hombros cada 2 horas. Fortalezca los músculos abdominales y lumbares con ejercicios específicos.</li>
+            </ul>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="footer-content">
+            <p>© 2025 Plataforma Educativa para la Higiene Postural en Docentes. Todos los derechos reservados.</p>
+            <p>Colegio E.T.R Monseñor Gregorio Adam, Naguanagua Edo. Carabobo</p>
+        </div>
+    </footer>
+
+    <script>
+        // Crear partículas interactivas
+        document.addEventListener('DOMContentLoaded', function() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 30;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // Tamaño aleatorio entre 5px y 15px
+                const size = Math.random() * 10 + 5;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                
+                // Posición inicial aleatoria
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.top = `${Math.random() * 100}%`;
+                
+                // Animación con duración aleatoria
+                const duration = Math.random() * 20 + 10;
+                particle.style.animationDuration = `${duration}s`;
+                
+                // Retraso inicial aleatorio
+                particle.style.animationDelay = `${Math.random() * 5}s`;
+                
+                particlesContainer.appendChild(particle);
+            }
+            
+            // Efecto hover para las tarjetas de anatomía
+            const anatomyCards = document.querySelectorAll('.anatomy-card');
+            anatomyCards.forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    card.style.transform = 'translateY(-10px)';
+                    card.style.boxShadow = '0 15px 30px rgba(0, 0, 0, 0.15)';
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = '';
+                    card.style.boxShadow = '';
+                });
+            });
+            
+            // Efecto de scroll suave para los enlaces internos
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
